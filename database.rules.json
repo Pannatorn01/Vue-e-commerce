@@ -1,0 +1,18 @@
+{
+  "rules": {
+    "banner": {
+      ".read": true,
+      ".write": false
+    },
+    "carts": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    },
+    "stats": {
+      ".read": "auth != null && auth.isAdmin == true",
+      ".write": false
+    }
+  }
+}
