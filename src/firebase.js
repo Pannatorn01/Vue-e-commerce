@@ -21,6 +21,8 @@ const auth = getAuth(app)
 const db = getFirestore(app);
 const storage = getStorage()
 const realtimeDB = getDatabase()
+
+
 //false && 
 if (import.meta.env.DEV) {
   connectDatabaseEmulator(realtimeDB, '127.0.0.1', 9000)

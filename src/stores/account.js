@@ -54,6 +54,8 @@ export const useAccountStore = defineStore('account', {
                      
                      this.profile.email = user.email
                     
+                    const idToken = await auth.currentUser.getIdToken(true)
+
                      resolve(true)
                     } else {
                         resolve(false)

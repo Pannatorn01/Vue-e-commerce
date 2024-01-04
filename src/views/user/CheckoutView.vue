@@ -38,9 +38,8 @@ const userFormData = reactive({
 
 const validateData = async () => {
  try {
-    let errorMessage = 'กรอกข้อมูลไม่ครบ'
     if(!userFormData.email || !userFormData.name || !userFormData.address){
-        eventStore.popupMessage('error',errorMessage)
+       alert('กรอกข้อมูลไม่ครบ')
     }
     else payment()
     

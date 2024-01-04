@@ -16,7 +16,7 @@ const createCharge = (source, amount, orderId) => {
     omise.charges.create({
       amount: (amount * 100),
       currency: 'THB',
-      return_uri: `http://localhost:5173/success?order_id=${orderId}`,
+      return_uri: `${process.env.SUCCESS_DOMAIN}/success?order_id=${orderId}`,
       metadata: {
         orderId
       },
@@ -30,7 +30,7 @@ const createCharge = (source, amount, orderId) => {
   })
 }
 
-app.post('/placeorder', async (req, res) => {
+app.post('/api/placeorder', async (req, res) => {
     try {
         const checkoutData = req.body.checkout
         const sourecOmise = req.body.source
@@ -145,7 +145,7 @@ app.post('/webhook', async (req, res) => {
     }
   })
 
-app.get('/test', async (req,res) => {
+app.get('/api/test', async (req,res) => {
   try {
     const userRef = db.collection('users')
     const userSnapshot = await userRef.get()
@@ -180,8 +180,8 @@ app.get('/set-admin', async (req, res) => {
 
 exports.api = onRequest(app)
 
-exports.updateOrder = onDocumentWritten('orders/{orderId}', async (event) => {
-  try {
+exports.updateOrder = onDocumentWritten('/orders/{orderId}', async (event) => {
+
     const oldData = event.data.before.data()
     const newData = event.data.after.data()
     const orderStateRef = realtimeDB.ref('stats/order')
@@ -190,10 +190,7 @@ exports.updateOrder = onDocumentWritten('orders/{orderId}', async (event) => {
     if (newData.status === 'successful' && 
         oldData && oldData.status === 'pending'){
       await orderStateRef.transaction((currentValue) => {
-        return currentValue + 1
+        return currentValue + newData.totalPrice
       })
     }
-  } catch (error) {
-    console.log('error', error)
-  }
 })
