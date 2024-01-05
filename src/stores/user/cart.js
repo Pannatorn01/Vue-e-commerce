@@ -107,13 +107,13 @@ export const useCartStore = defineStore('cart', {
                 }))
             } 
            const omiseReponse = await createSource(this.summaryPrice)
-          
+
            const response = await axios.post('/api/placeorder', {
             source: omiseReponse.id, 
             checkout: checkoutData
             })
             return response.data
-       
+
           } catch (error) {
             console.log('error',error)
           }

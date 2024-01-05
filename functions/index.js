@@ -16,7 +16,7 @@ const createCharge = (source, amount, orderId) => {
     omise.charges.create({
       amount: (amount * 100),
       currency: 'THB',
-      return_uri: `${process.env.SUCCESS_DOMAIN}/success?order_id=${orderId}`,
+      return_uri: `http://localhost:5173/success?order_id=${orderId}`,
       metadata: {
         orderId
       },
@@ -30,7 +30,7 @@ const createCharge = (source, amount, orderId) => {
   })
 }
 
-app.post('/api/placeorder', async (req, res) => {
+app.post('/placeorder', async (req, res) => {
     try {
         const checkoutData = req.body.checkout
         const sourecOmise = req.body.source
@@ -39,7 +39,7 @@ app.post('/api/placeorder', async (req, res) => {
         let totalPrice = 0
         let orderData = {}
         let successOrderId = ''
-    
+
         const products =  checkoutData.products
 
         await db.runTransaction(async (t) => {
@@ -47,7 +47,7 @@ app.post('/api/placeorder', async (req, res) => {
               const productRef =  db.collection('products').doc(product.productId)
               const productSnapshot = await productRef.get()
               const productData = productSnapshot.data()
-           
+
               let checkoutProduct = product
               checkoutProduct.name = productData.name
               checkoutProduct.imageUrl = productData.imageUrl
@@ -55,7 +55,7 @@ app.post('/api/placeorder', async (req, res) => {
               checkoutProduct.totalPrice = productData.price * product.quantity
               totalPrice += (productData.price * product.quantity)
               checkoutProducts.push(checkoutProduct)      
-                
+
               if (productData.remainQuantity - product.quantity < 0 ){
                 throw new Error (`Product ${productData.name} out of stock`)   
               }
@@ -65,11 +65,11 @@ app.post('/api/placeorder', async (req, res) => {
               })
             }
           const orderRef = db.collection('orders')
-                
+
           const orderId = orderRef.doc().id
 
           omiseReseponse = await createCharge(sourecOmise, totalPrice, orderId)
-          
+            console.log(omiseReseponse)
           orderData = {
             ...checkoutData,
             chargeId:  omiseReseponse.id,
@@ -145,7 +145,7 @@ app.post('/webhook', async (req, res) => {
     }
   })
 
-app.get('/api/test', async (req,res) => {
+app.get('/test', async (req,res) => {
   try {
     const userRef = db.collection('users')
     const userSnapshot = await userRef.get()

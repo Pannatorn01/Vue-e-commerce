@@ -1,0 +1,19 @@
+{
+  "name": "products/pt6.jpg",
+  "bucket": "test-easy-emommerce.appspot.com",
+  "metageneration": 1,
+  "generation": 1704351263080,
+  "contentType": "image/jpeg",
+  "storageClass": "STANDARD",
+  "contentDisposition": "inline",
+  "downloadTokens": [
+    "b2a7ff93-c777-484f-bcc8-7ec12fe4371a"
+  ],
+  "etag": "nrjpO5xHJXHiTlrA+zrKF5DoC1A",
+  "customMetadata": {},
+  "timeCreated": "2024-01-04T06:54:23.080Z",
+  "updated": "2024-01-04T06:54:23.080Z",
+  "size": 419058,
+  "md5Hash": "F5X6hRIp3fBScHieRSKRmA==",
+  "crc32c": "3343655783"
+}

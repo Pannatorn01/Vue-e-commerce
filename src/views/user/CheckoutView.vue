@@ -39,7 +39,7 @@ const userFormData = reactive({
 const validateData = async () => {
  try {
     if(!userFormData.email || !userFormData.name || !userFormData.address){
-       alert('กรอกข้อมูลไม่ครบ')
+       alert('The information entered is incomplete.')
     }
     else payment()
     
@@ -86,7 +86,7 @@ const payment = async () => {
                         <div class="flex flex-col justify-between h-full">
                             <div>
                                 <div> <b>{{ item.name }}</b></div>
-                                <div>จำนวน {{ item.quantity }}</div>
+                                <div>Quantity {{ item.quantity }}</div>
                             </div>
                             <RouterLink :to="{ name: 'cart' }">Edit</RouterLink>
                         </div>
@@ -96,13 +96,13 @@ const payment = async () => {
                 <div class="px-4">
                     <div><b>Order Summary</b></div>
                     <div class="flex justify-between">
-                        <div>ราคาสินค้าทั้งหมด</div>
+                        <div>All product prices</div>
                         <div>
                             {{ cartStore.summaryPrice }}
                         </div>
                     </div>
                     <div class="flex justify-between">
-                        <div>ค่าส่ง</div>
+                        <div>Shipping cost</div>
                         <div>
                             0
                         </div>
@@ -110,7 +110,7 @@ const payment = async () => {
                 </div>
                 <div class="divider"></div>
                 <div class="flex justify-between pb-5 px-4">
-                    <div>ราคาทั้งหมด</div>
+                    <div>Total prices</div>
                     <div>
                         {{ cartStore.summaryPrice }}
                     </div>

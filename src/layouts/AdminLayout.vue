@@ -3,6 +3,10 @@ import { ref, onMounted } from 'vue'
 import { RouterLink, useRoute, useRouter} from 'vue-router';
 
 import { useAccountStore } from '../stores/account';
+import { useCartStore } from '@/stores/user/cart'
+
+const cartStore = useCartStore()
+
 const menus = [
     {
     name: 'Dashboard',

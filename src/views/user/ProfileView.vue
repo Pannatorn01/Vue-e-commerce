@@ -42,6 +42,7 @@ const updateProfile = async () => {
         email: email.value
     }
      await accountStore.updateProfile(profileData)
+     alert('Profile updated successfully')
     } catch (error) {
         console.log('error',error)
     }

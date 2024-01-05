@@ -30,11 +30,11 @@ const changeQuantity = (event, index) => {
                     <div  class="flex-1">
                         <div class="flex flex-col justify-between h-full">
                           <div>
-                            <div class="relative grid grid-cols-2 ">
+                            <div class="relative grid grid-rows-2 ">
                                <div>
-                                    <div><b>{{ item.name }}</b></div>
-                                    <div>{{ item.about }}</div>
-                                    <div>{{ item.price }}</div>
+                                    <div class="mt-10 text-xl"><b>{{ item.name }}</b></div>
+                                    <div class="mt-2 ">{{ item.about }}</div>
+                                    <div class="mt-2 mb-8">price :{{ item.price }}</div>
                                </div>
                                <div >
                                 <select v-model="item.quantity" @change="changeQuantity($event, index)" class="p-4 w-1/2">
@@ -60,19 +60,19 @@ const changeQuantity = (event, index) => {
                 </div>
                 <div class="my-4 divide-y divide-black ">                    
                     <div class="flex justify-between">
-                        <div>ราคาสินค้าทั้งหมด</div>
+                        <div>All product prices</div>
                         <div>{{ cartStore.summaryPrice }}</div>
                     </div>
                     <div class="flex justify-between py-2">
-                        <div>ค่าส่ง</div> 
+                        <div>Shipping cost</div> 
                         <span>0</span>
                     </div>
                     <div class="flex justify-between py-2 pb-5">
-                        <div>ราคารวมท้ังหมด</div>
+                        <div>Total price</div>
                         <span>{{ cartStore.summaryPrice }}</span>
                     </div>
                     <RouterLink :to="{ name: 'checkout' }" class="btn btn-neutral w-full ">
-                        ชำระเงิน
+                        Payment
                     </RouterLink>
                 </div>
             </div>

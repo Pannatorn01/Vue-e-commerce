@@ -30,7 +30,7 @@ onMounted(async () => {
             <div>
                 <div class="text-2xl font-bold">Your order is {{ orderData.status  }} !</div>
                 <div>Hi, {{orderData.name}} </div>
-                <div>เตรียมรอรับสินค้าได้เลย</div>
+                <div>Wait to receive the product.</div>
 
                 <div class="divider"></div>      
 
@@ -64,7 +64,7 @@ onMounted(async () => {
                         <div>{{ product.about }}</div>
                     </div>
                     <div>
-                        <div>จำนวน {{ product.quantity }}  </div>
+                        <div>quantity {{ product.quantity }}  </div>
                     </div>
                     <div>
                         <div>{{ product.price }} </div>
@@ -74,22 +74,22 @@ onMounted(async () => {
                 <div class="divider"></div>    
 
                 <div class="flex justify-between mb-3">
-                        <div class="font-bold">ราคาสินค้าทั้งหมด</div>
+                        <div class="font-bold">All product prices</div>
                         <div>{{ cartStore.summaryPrice }}</div>
                 </div>
                 <div class="flex justify-between">
-                        <div class="font-bold">ค่าส่ง</div>
+                        <div class="font-bold">Shipping cost</div>
                         <div>0</div>
                 </div>
                 <div class="divider"></div>   
                 <div class="flex justify-between">
-                        <div class="font-bold">ราคาทั้งสิ้น</div>
+                        <div class="font-bold">Total price</div>
                         <div>{{ cartStore.summaryPrice }}</div>
                 </div>
 
                 <div class="divider"></div>
 
-                <div>ขอบคุณที่มาซื้อกับเรา</div>
+                <div>Thank you for shopping with us.</div>
 
                 <div class="divider"></div> 
             </div>
