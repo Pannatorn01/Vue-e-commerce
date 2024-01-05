@@ -7,7 +7,7 @@ const { getDatabase } = require('firebase-admin/database')
 initializeApp({
   projectId: 'test-easy-emommerce',
   credential: applicationDefault(), 
-  databaseURL: "https://test-easy-emommerce-default-rtdb.firebaseio.com"
+  databaseURL: 'http://127.0.0.1:9000/?ns=test-easy-emommerce-default-rtdb'
 })
 
 const db = getFirestore()

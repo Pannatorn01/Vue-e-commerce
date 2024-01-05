@@ -65,7 +65,6 @@ export const useAccountStore = defineStore('account', {
           
         },
         async updateProfile (userData) {
-            console.log(userData)
             try {
                 const updateUserData = {
                     fullname: userData.fullname,
@@ -74,6 +73,7 @@ export const useAccountStore = defineStore('account', {
     
                 const userRef = doc(db, `users/${this.user.uid}`)
                 await updateDoc(userRef,updateUserData)
+                window.location.reload()
             } catch (error) {
                 console.log('error',error)
             }

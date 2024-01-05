@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 import UserLayouts  from '@/layouts/UserLayout.vue'
@@ -15,14 +16,18 @@ const addToCart = (product) => {
     cartStore.addToCart(product)
     router.push({ name: 'cart' })
 }
+
+onMounted(() => {
+    localStorage.removeItem('cart-data')
+})
 </script>
 <template>
     <UserLayouts>
         <div class="hero h-96 bg-base-200">
             <div class="hero-content text-center">
                 <div class="max-w-md">
-                <h1 class="text-5xl font-bold">SNK Part</h1>
-                <p class="py-6">SNK has been manufacturing Standard Press and Die Components Business , Finishing Plates Business.</p>
+                <h1 class="text-5xl font-bold">PNT Card</h1>
+                <p class="py-6">Here is a drawing I created. You can collect as you wish.</p>
                 </div>
             </div>
         </div>

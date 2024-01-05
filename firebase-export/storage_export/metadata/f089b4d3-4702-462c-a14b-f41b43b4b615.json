@@ -1,0 +1,19 @@
+{
+  "name": "products/tp4.jpg",
+  "bucket": "test-easy-emommerce.appspot.com",
+  "metageneration": 1,
+  "generation": 1704351171804,
+  "contentType": "image/jpeg",
+  "storageClass": "STANDARD",
+  "contentDisposition": "inline",
+  "downloadTokens": [
+    "2447ec26-4337-4c33-8473-0c38b5f1460e"
+  ],
+  "etag": "WjiURCGEbHyCBN3PXsrars9ynuU",
+  "customMetadata": {},
+  "timeCreated": "2024-01-04T06:52:51.804Z",
+  "updated": "2024-01-04T06:52:51.804Z",
+  "size": 322254,
+  "md5Hash": "d4AJvhg0/ckzWTENFzjGUQ==",
+  "crc32c": "2777103749"
+}
